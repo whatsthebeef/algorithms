@@ -32,42 +32,28 @@ public class BinaryTree {
 
    public void insert(Integer data) {
       // Deal with no data in the tree
-      if(rootNode == null) {
-         rootNode = new Node(data);
-      }
-      else {
-         insert(rootNode, data);
-      }
+      rootNode = insert(rootNode, data);
    }
 
-   private void insert(Node parentNode, Integer data) {
+   private Node insert(Node node, Integer data) {
       // Deal with no data in the tree
-      if(parentNode == null) {
-         return;
+      if(node == null) {
+         return new Node(data);
       }
 
       // Deal with current node
-      if(data == parentNode.getData()) {
-         return; 
+      if(data == node.getData()) {
+         return new Node(data); 
       }
 
       // Deal with sub trees
-      if(data < parentNode.getData()){
-         if(parentNode.getLeft() == null) {
-            parentNode.setLeft(new Node(data));
-         }
-         else {
-            insert(parentNode.getLeft(), data);
-         }
+      if(data < node.getData()){
+         node.setLeft(insert(node.getLeft(), data));
       }
       else {
-         if(parentNode.getRight() == null) {
-            parentNode.setRight(new Node(data));
-         }
-         else {
-            insert(parentNode.getRight(), data);
-         }
+         node.setRight(insert(node.getRight(), data));
       }
+      return node;
    }
 
    public String toString(){
