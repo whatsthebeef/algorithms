@@ -81,4 +81,12 @@ public class BinaryTree {
       }
       return tree;
    }
+
+   protected Node getRootNode(){
+      return rootNode;
+   }
+
+   protected void setRootNode(Node rootNode){
+      this.rootNode = rootNode;
+   }
 }
